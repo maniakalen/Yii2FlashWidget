@@ -29,7 +29,7 @@ use yii\bootstrap\Widget;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @author Alexander Makarov <sam@rmcreative.ru>
  */
-class Alert extends Widget
+class Flash extends Widget
 {
     /**
      * @var array the alert types configuration for the flash messages.
