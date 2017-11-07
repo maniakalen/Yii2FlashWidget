@@ -1,8 +1,14 @@
 <?php
 /**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
+ * Class Flash
+ *
+ *  Module definition for Yii2 framework
+ *
+ * @category Widgets
+ * @package  Manaiaklen_Widgets
+ * @author   Peter Georgiev <peter.georgiev@concatel.com>
+ * @license  GNU GENERAL PUBLIC LICENSE https://www.gnu.org/licenses/gpl.html
+ * @link     -
  */
 
 namespace maniakalen\widgets;
@@ -11,31 +17,31 @@ use yii\bootstrap\Html;
 use yii\bootstrap\Alert as BsAlert;
 use yii\bootstrap\Widget;
 /**
- * Alert widget renders a message from session flash. All flash messages are displayed
- * in the sequence they were assigned using setFlash. You can set message as following:
- *
- * ```php
- * \Yii::$app->session->setFlash('error', 'This is the message');
- * \Yii::$app->session->setFlash('success', 'This is the message');
- * \Yii::$app->session->setFlash('info', 'This is the message');
- * ```
- *
- * Multiple messages could be set as follows:
  *
  * ```php
  * \Yii::$app->session->setFlash('error', ['Error 1', 'Error 2']);
  * ```
+ * Class Flash
  *
- * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @author Alexander Makarov <sam@rmcreative.ru>
+ *  Yii2 Flash alert widget with bootstrap
+ *
+ * @category Widgets
+ * @package  Manaiaklen_Widgets
+ * @author   Peter Georgiev <peter.georgiev@concatel.com>
+ * @license  GNU GENERAL PUBLIC LICENSE https://www.gnu.org/licenses/gpl.html
+ * @link     -
+ *
+ * Based on  Antonio Ramirez Alert widget
+ *
  */
 class Flash extends Widget
 {
     /**
-     * @var array the alert types configuration for the flash messages.
      * This array is setup as $key => $value, where:
      * - $key is the name of the session flash variable
      * - $value is the bootstrap alert type (i.e. danger, success, info, warning)
+     *
+     * @var array the alert types configuration for the flash messages.
      */
     public $alertTypes = [
         'error'   => 'alert-danger',
