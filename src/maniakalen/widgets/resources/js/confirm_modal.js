@@ -17,7 +17,7 @@ confirmModal = function(outerconfig) {
             var $dom = jqr('#' + config.id);
             if ($dom.length === 0) {
                 $dom = jqr('<div/>').attr('id', config.id);
-                $dom.addClass('modal');
+                $dom.addClass('modal confirm-modal');
                 $dom.appendTo(jqr('body'));
             }
             $dom.modal({'backdrop' : true, 'show': false});
