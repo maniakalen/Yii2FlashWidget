@@ -1,0 +1,7 @@
+.confirm-modal .modal-dialog {
+    z-index: 10001 !important;
+}
+
+.confirm-modal .modal-backdrop {
+    z-index: 10000 !important;
+}
