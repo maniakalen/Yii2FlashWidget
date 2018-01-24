@@ -42,4 +42,8 @@ class ConfirmModalAsset extends AssetBundle
     public $css = [
         'css/confirm_modal.css',
     ];
+
+    public $depends = [
+        'yii\web\JqueryAsset',
+    ];
 }

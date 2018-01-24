@@ -1,7 +1,11 @@
+if (typeof jQuery === 'undefined') {
+    alert("jQuery not loaded");
+}
+var jqr = jQuery;
 confirmModal = function(outerconfig) {
-    return $.Deferred(function(def) {
+    return jqr.Deferred(function(def) {
         (function(config) {
-            config = $.extend({}, {
+            config = jqr.extend({}, {
                 "title" : "Confirm an action",
                 "content" : "Are you sure you want to proceed with this action?",
                 "titleOk" : "Yes",
@@ -10,11 +14,11 @@ confirmModal = function(outerconfig) {
             if (typeof config.id === 'undefined') {
                 return false;
             }
-            var $dom = $('#' + config.id);
+            var $dom = jqr('#' + config.id);
             if ($dom.length === 0) {
-                $dom = $('<div/>').attr('id', config.id);
+                $dom = jqr('<div/>').attr('id', config.id);
                 $dom.addClass('modal');
-                $dom.appendTo($('body'));
+                $dom.appendTo(jqr('body'));
             }
             $dom.modal({'backdrop' : true, 'show': false});
             var html  = '<div class="modal-dialog" role="document">';
@@ -34,10 +38,10 @@ confirmModal = function(outerconfig) {
             html += '</div>';
             $dom.html(html);
 
-            $('a#button-ok', $dom).on('click', function() {
+            jqr('a#button-ok', $dom).on('click', function() {
                 def.resolve();
             });
-            $('a#button-cancel', $dom).on('click', function() {
+            jqr('a#button-cancel', $dom).on('click', function() {
                 def.reject();
             });
 
