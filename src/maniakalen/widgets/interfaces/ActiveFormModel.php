@@ -12,4 +12,6 @@ namespace maniakalen\widgets\interfaces;
 interface ActiveFormModel
 {
     public function getFieldsSignature();
+    public function getCreateAction();
+    public function getUpdateAction();
 }

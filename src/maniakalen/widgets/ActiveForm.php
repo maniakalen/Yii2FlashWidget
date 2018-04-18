@@ -12,6 +12,7 @@ namespace maniakalen\widgets;
 use maniakalen\widgets\interfaces\ActiveFormModel;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 class ActiveForm extends \yii\widgets\ActiveForm
 {
@@ -28,6 +29,17 @@ class ActiveForm extends \yii\widgets\ActiveForm
     /** @var Model $model */
     public $model;
 
+    public $submitButton = [
+        'label' => 'Save',
+        'options' => ['class' => 'btn btn-success'],
+        'permission' => false,
+    ];
+
+    public $resetButton = [
+        'label' => 'Cancel',
+        'options' => ['class' => 'btn btn-danger'],
+        'permission' => false,
+    ];
     /**
      * @return string
      * @throws \ErrorException
@@ -77,7 +89,18 @@ class ActiveForm extends \yii\widgets\ActiveForm
                     throw new \ErrorException("Unsupported field type");
             }
         }
-
+        $submitPermission = ArrayHelper::remove($this->submitButton, 'permission', false);
+        if (!$submitPermission || \Yii::$app->user->can($submitPermission)) {
+            $submitLabel = ArrayHelper::remove($this->submitButton, 'label', 'Save');
+            $submitOptions = ArrayHelper::remove($this->submitButton, 'options', ['class' => 'btn btn-primary']);
+            echo Html::submitInput($submitLabel, $submitOptions);
+        }
+        $resetPermission = ArrayHelper::remove($this->resetButton, 'permission', false);
+        if (!$resetPermission || \Yii::$app->user->can($resetPermission)) {
+            $resetLabel = ArrayHelper::remove($this->resetButton, 'label', 'Save');
+            $resetOptions = ArrayHelper::remove($this->resetButton, 'options', ['class' => 'btn btn-danger']);
+            echo Html::resetInput($resetLabel, $resetOptions);
+        }
         return parent::run();
     }
 }
