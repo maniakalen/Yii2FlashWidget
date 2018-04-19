@@ -89,6 +89,12 @@ class ActiveForm extends \yii\widgets\ActiveForm
                     throw new \ErrorException("Unsupported field type");
             }
         }
+        $blocks = $this->model->getFormBlocks();
+        if (!empty($blocks)) {
+            foreach ($blocks as $block) {
+                echo $block->render($this);
+            }
+        }
         $submitPermission = ArrayHelper::remove($this->submitButton, 'permission', false);
         if (!$submitPermission || \Yii::$app->user->can($submitPermission)) {
             $submitLabel = ArrayHelper::remove($this->submitButton, 'label', 'Save');
