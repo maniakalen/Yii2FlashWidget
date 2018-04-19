@@ -10,6 +10,7 @@ namespace maniakalen\widgets;
 
 
 use maniakalen\widgets\interfaces\ActiveFormModel;
+use maniakalen\widgets\interfaces\ActiveFormModelBlock;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -92,7 +93,9 @@ class ActiveForm extends \yii\widgets\ActiveForm
         $blocks = $this->model->getFormBlocks();
         if (!empty($blocks)) {
             foreach ($blocks as $block) {
-                echo $block->render($this);
+                if ($block instanceof ActiveFormModelBlock) {
+                    echo $block->render($this);
+                }
             }
         }
         $submitPermission = ArrayHelper::remove($this->submitButton, 'permission', false);
