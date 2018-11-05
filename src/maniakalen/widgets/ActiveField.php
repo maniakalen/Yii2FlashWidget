@@ -5,7 +5,7 @@
  * @version 1.1.12
  */
 
-namespace common\widgets;
+namespace maniakalen\widgets;
 
 /**
  * Class ActiveField
